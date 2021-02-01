@@ -1,0 +1,43 @@
+plugins {
+    id 'scala'
+
+    id 'java-library'
+}
+
+repositories {
+    jcenter()
+}
+
+compileScala.options.encoding = 'UTF-8'
+
+
+group = 'beam'
+version = '0.5.0'
+
+configurations{
+    scalaCompilerPlugin
+}
+
+def scalaBinaryVersion = "2.12"
+def scalaVersion = "2.12.12"
+def slf4jVersion = "1.7.25"
+def scalaTestVersion = "3.0.8"
+
+dependencies {
+    implementation "org.scala-lang:scala-library:${scalaVersion}"
+
+    implementation group: 'com.graphhopper', name: 'jsprit-core', version: '1.9.0-beta.3'
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+    implementation "ch.qos.logback:logback-classic:1.2.3"
+    implementation "com.typesafe.scala-logging:scala-logging_${scalaBinaryVersion}:3.9.0"
+
+    testImplementation group: 'org.scalatest', name: "scalatest_${scalaBinaryVersion}", version: scalaTestVersion
+}
+
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
