@@ -6,6 +6,7 @@ import com.graphhopper.jsprit.core.problem.solution.route.VehicleRoute
 import com.graphhopper.jsprit.core.problem.solution.route.activity.{DeliverService, PickupService, TourActivity}
 import com.graphhopper.jsprit.core.problem.vehicle.{VehicleImpl, VehicleTypeImpl}
 import com.graphhopper.jsprit.core.problem.VehicleRoutingProblem
+import com.graphhopper.jsprit.core.problem.VehicleRoutingProblem.FleetSize
 import com.graphhopper.jsprit.core.util.Solutions
 
 import scala.collection.JavaConverters._
@@ -58,6 +59,7 @@ object JspritWrapper {
       VehicleImpl.Builder.newInstance(vehicle.id)
         .setType(vehicleTypes(vehicle))
         .setStartLocation(toJspritLocation(vehicle.location))
+        .setEarliestStart(vehicle.departureTime)
         .setReturnToDepot(vehicle.returnToDepot)
         .build()
     }
@@ -89,6 +91,7 @@ object JspritWrapper {
 
     vrpBuilder.addAllVehicles(vehicles.asJava)
     vrpBuilder.addAllJobs(services.asJava)
+    vrpBuilder.setFleetSize(FleetSize.FINITE)
 
     val jProblem = vrpBuilder.build
 

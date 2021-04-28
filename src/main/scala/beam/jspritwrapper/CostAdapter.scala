@@ -18,6 +18,7 @@ class CostAdapter(costCalculator: (Location, Location, Double, Option[Vehicle]) 
     jVehicle.getId,
     jVehicle.getStartLocation,
     jVehicle.getType.getCapacityDimensions.get(JspritWrapper.WEIGHT_INDEX),
+    jVehicle.getEarliestDeparture,
     jVehicle.isReturnToDepot,
   )
 

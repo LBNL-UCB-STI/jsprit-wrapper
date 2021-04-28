@@ -7,7 +7,12 @@ package beam.jspritwrapper
 
 case class Location(x: Double, y: Double)
 
-case class Vehicle(id: String, location: Location, capacity: Int, returnToDepot: Boolean = true)
+case class Vehicle(id: String,
+                   location: Location,
+                   capacity: Int,
+                   departureTime: Double = 0,
+                   returnToDepot: Boolean = true
+                  )
 
 sealed trait Service {
   def id: String
