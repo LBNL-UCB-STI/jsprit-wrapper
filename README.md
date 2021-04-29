@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/LBNL-UCB-STI/jsprit-wrapper.svg)](https://jitpack.io/#LBNL-UCB-STI/jsprit-wrapper)
+
 # jsprit-wrapper
 
 ### Build
